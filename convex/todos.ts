@@ -9,14 +9,15 @@ export const list = query({
   },
 });
 
-export const send = mutation({
+export const save = mutation({
   args: { 
     title: v.string(),
     body: v.string(),
-    priority: v.boolean(),
-    date: v.string(), 
+    priority: v.string(),
+    dateCreated: v.string(), 
+    dateDeadline: v.string()
   },
-  handler: async (ctx, { title, body, priority, date }) => {
-    await ctx.db.insert("todos", { title, body, priority, date  });
+  handler: async (ctx, { title, body, priority, dateCreated,  dateDeadline}) => {
+    await ctx.db.insert("todos", { title, body, priority, dateCreated, dateDeadline });
   },
 });
